@@ -20,7 +20,7 @@ export default function Header() {
 
             <header id="header" className="fixed-top">
                 <div className="container d-flex align-items-center">
-                    <h1 className="logo me-auto"><a href="index.html">Medilab</a></h1>
+                    <h1 className="logo me-auto"><a href="">Medilab</a></h1>
                     <nav id="navbar" className="navbar order-last order-lg-0">
                         <ul>
                             <li><a className="nav-link scrollto active" href="#hero">Home</a></li>

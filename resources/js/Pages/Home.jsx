@@ -1,8 +1,9 @@
-import { Head, usePage } from "@inertiajs/inertia-react";
 import Base from "../Layouts/Base";
+import ErrorMessage from "../Components/ErrorMessage";
+import Swal from "sweetalert2";
+import { Head, usePage } from "@inertiajs/inertia-react";
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
-import Swal from "sweetalert2";
 
 export default function Home() {
     const {errors} = usePage().props;
@@ -41,6 +42,7 @@ export default function Home() {
                     timer: 1500
                 });
                 handleFormReset();
+                // window.csrfToken = "{{ csrf_token() }}";
             }
         });
     };
@@ -58,29 +60,17 @@ export default function Home() {
                                     <form onSubmit={storePost} method="post" role="form" autoComplete="off" className="php-email-form">
                                         <div className="row">
                                             <div className="col-md-6 form-group">
-                                                <input type="text" name="title" className="form-control" id="title" placeholder="Title" data-msg="Please fill in the title of your bulletin post" value={formData.title} onChange={handleInputChange} />
-                                                {errors.title && (
-                                                    <div className="validate">
-                                                        {errors.title}
-                                                    </div>
-                                                )}
+                                                <input type="text" name="title" className="form-control" id="title" placeholder="Title" value={formData.title} onChange={handleInputChange} required />
+                                                <ErrorMessage error={errors.title} />
                                             </div>
                                             <div className="col-md-6 form-group mt-3 mt-md-0">
-                                                <input type="text" className="form-control" name="author" id="author" placeholder="Your Name" data-msg="Please fill in your name" value={formData.author} onChange={handleInputChange} />
-                                                {errors.author && (
-                                                    <div className="validate">
-                                                        {errors.author}
-                                                    </div>
-                                                )}
+                                                <input type="text" className="form-control" name="author" id="author" placeholder="Your Name" value={formData.author} onChange={handleInputChange} required />
+                                                <ErrorMessage error={errors.author} />
                                             </div>
                                         </div>
                                         <div className="form-group mt-3">
-                                            <textarea className="form-control" name="content" rows="5" placeholder="Content" value={formData.content} onChange={handleInputChange}></textarea>
-                                            {errors.content && (
-                                                <div className="validate">
-                                                    {errors.content}
-                                                </div>
-                                            )}
+                                            <textarea className="form-control" name="content" rows="5" placeholder="Content" value={formData.content} onChange={handleInputChange} required ></textarea>
+                                            <ErrorMessage error={errors.content} />
                                         </div>
                                         <div className="text-center mt-3">
                                             <button type="button" className="btn btn-warning me-2" onClick={handleFormReset}>Reset <i className="bx bx-reset"></i></button>
