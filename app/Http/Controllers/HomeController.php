@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Home');
+        $posts = Post::latest()->paginate(4);
+
+        return inertia('Home', [
+            'posts' => $posts,
+        ]);
     }
 
     public function store(Request $request)
