@@ -23,7 +23,7 @@ export default function Header() {
                     <h1 className="logo me-auto"><a href="">Medilab</a></h1>
                     <nav id="navbar" className="navbar order-last order-lg-0">
                         <ul>
-                            <li><a className="nav-link scrollto active" href="#hero">Home</a></li>
+                            <li><a className="nav-link scrollto active" href="#why-us">Home</a></li>
                             <li><a className="nav-link scrollto" href="#about">About</a></li>
                             <li><a className="nav-link scrollto" href="#departments">Departments</a></li>
                             <li><a className="nav-link scrollto" href="#doctors">Doctors</a></li>
