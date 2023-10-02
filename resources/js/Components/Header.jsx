@@ -1,6 +1,9 @@
 import React from "react"
+import { Link, usePage } from "@inertiajs/inertia-react"
 
 export default function Header() {
+    const {url} = usePage();
+
     return (
         <>
             <div id="topbar" className="d-flex align-items-center fixed-top">
@@ -23,14 +26,13 @@ export default function Header() {
                     <h1 className="logo me-auto"><a href="">Medilab</a></h1>
                     <nav id="navbar" className="navbar order-last order-lg-0">
                         <ul>
-                            <li><a className="nav-link scrollto active" href="#why-us">Home</a></li>
-                            <li><a className="nav-link scrollto" href="#about">About</a></li>
-                            <li><a className="nav-link scrollto" href="#departments">Departments</a></li>
-                            <li><a className="nav-link scrollto" href="#doctors">Doctors</a></li>
-                            <li><a className="nav-link scrollto" href="#contact">Contact</a></li>
-                            <li><a className="nav-link scrollto" href="#faq">FAQ</a></li>
-                            <li><a className="nav-link scrollto" href="#testimonials">Testimonials</a></li>
-                            <li><a className="nav-link scrollto" href="#gallery">Gallery</a></li>
+                            <li><Link href="/" className={url === '/' ? "nav-link active" : "nav-link"}>Home</Link></li>
+                            <li><Link href="/about" className={url.startsWith('/about') ? "nav-link active" : "nav-link"}>About</Link></li>
+                            <li><Link href="/departments" className={url.startsWith('/departments') ? "nav-link active" : "nav-link"}>Departments</Link></li>
+                            <li><Link href="/doctors" className={url.startsWith('/doctors') ? "nav-link active" : "nav-link"}>Doctors</Link></li>
+                            <li><Link href="/faq" className={url.startsWith('/faq') ? "nav-link active" : "nav-link"}>FAQ</Link></li>
+                            <li><Link href="/testimonials" className={url.startsWith('/testimonials') ? "nav-link active" : "nav-link"}>Testimonials</Link></li>
+                            <li><Link href="/gallery" className={url.startsWith('/gallery') ? "nav-link active" : "nav-link"}>Gallery</Link></li>
                         </ul>
                         <i className="bi bi-list mobile-nav-toggle"></i>
                     </nav>
